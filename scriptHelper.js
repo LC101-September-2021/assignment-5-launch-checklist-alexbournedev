@@ -45,6 +45,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   let cargoStatus = document.getElementById("cargoStatus");
   let launch = document.getElementById("launchStatus");
 
+  // if cargo mass too heavy and fuel level too low
   if (cargoLevel > 10000 && fuelLevel < 10000) {
     list.style.visibility = "visible";
     launch.style.color = "#C7254E";
@@ -53,6 +54,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
     fuelStatus.innerHTML = "Fuel level too low for launch";
     cargoStatus.innerHTML = "Cargo mass too heavy for launch";
+    // if fuel level too low but cargo mass low enough
   } else if (fuelLevel < 10000 && cargoLevel <= 10000) {
     list.style.visibility = "visible";
     launch.style.color = "#C7254E";
@@ -60,7 +62,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     fuelStatus.innerHTML = "Fuel level too low for launch";
     pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
     copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
-    cargoStatus.innerHTML = "Cargo mass too heavy for launch";
+    cargoStatus.innerHTML = "Cargo mass low enough for launch";
+    // if fuel level OK but cargo too heavy
   } else if (cargoLevel > 10000 && fuelLevel >= 10000) {
     list.style.visibility = "visible";
     launch.style.color = "#C7254E";
@@ -73,8 +76,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     list.style.visibility = "visible";
     launch.style.color = "#419F6A";
     launch.innerHTML = "Shuttle is Ready for Launch";
-    pilotStatus.innerHTML = `Pilot ${pilot} Ready!`;
-    copilotStatus.innerHTML = `Co-pilot ${copilot} Ready!`;
+    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
     fuelStatus.innerHTML = "Fuel level high enough for launch";
     cargoStatus.innerHTML = "Cargo mass low enough for launch";
   }
